@@ -7,6 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+ <a href="{{ route('photo.index')}}">一覧へ</a>
+    <p>{{ $photo->title }}</p>
+    <img src={{ Storage::url($photo->image) }} >
 
 </body>
 </html>
