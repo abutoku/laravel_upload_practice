@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PhotoController;
+use App\Http\Controllers\PictureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use App\Http\Controllers\PhotoController;
 */
 
 Route::resource('photo', PhotoController::class);
+
+Route::resource('picture', PictureController::class);
 
 Route::get('/', function () {
     return view('welcome');

@@ -49,7 +49,7 @@ class PhotoController extends Controller
         // バリデーション
         $validator = Validator::make($request->all(), [
             'title' => 'required | max:191',
-            'image' => 'required|file|image',
+            'photo' => 'required|file|image',
         ]);
         // バリデーション:エラー
         if ($validator->fails()) {
@@ -59,7 +59,7 @@ class PhotoController extends Controller
                 ->withErrors($validator);
         }
         //リクエストファイルの画像を取得
-        $upload_image = $request->file('image');
+        $upload_image = $request->file('photo');
 
         //画像をpublic直下のuploadsに保存し$pathにパスを取得
         $path = $upload_image->store('uploads', "public");
@@ -68,7 +68,7 @@ class PhotoController extends Controller
             //DBに保存
             $result = Photo::create([
                 "title" => $request->title,
-                "image" => $path
+                "photoUrl" => $path
             ]);
         }
 
@@ -123,7 +123,7 @@ class PhotoController extends Controller
         //photo_tableからidが一致しているものを取得
         $photo = Photo::find($id);
         //ストレージから画像を削除
-        Storage::disk('public')->delete($photo->image);
+        Storage::disk('public')->delete($photo->photoUrl);
         //photo_tableからidが一致しているものを削除
         $result = Photo::find($id)->delete();
         //log.indexへ戻る

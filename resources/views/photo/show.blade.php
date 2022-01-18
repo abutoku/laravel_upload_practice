@@ -9,7 +9,7 @@
 <body>
  <a href="{{ route('photo.index')}}">一覧へ</a>
     <p>{{ $photo->title }}</p>
-    <img src={{ Storage::url($photo->image) }} >
+    <img src={{ Storage::url($photo->photoUrl) }} >
     <form action="{{ route('photo.destroy',$photo->id) }}" method="post">
         @method('delete')
         @csrf
