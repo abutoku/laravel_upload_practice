@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Photo;
 
+//Storegeの読み込み
+use Illuminate\Support\Facades\Storage;
+
 class PhotoController extends Controller
 {
     /**
@@ -117,6 +120,13 @@ class PhotoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //photo_tableからidが一致しているものを取得
+        $photo = Photo::find($id);
+        //ストレージから画像を削除
+        Storage::disk('public')->delete($photo->image);
+        //photo_tableからidが一致しているものを削除
+        $result = Photo::find($id)->delete();
+        //log.indexへ戻る
+        return redirect()->route('photo.index');
     }
 }
