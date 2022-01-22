@@ -7,9 +7,9 @@
     <title>テスト</title>
 </head>
 <body>
-    <h1>投稿一覧</h1>
-    
-    <a href="{{ route('image.create') }}">投稿ページへ</a>
+    <h1>test index</h1>
+    <a href="{{ route('dashboard') }}">TOP</a>
+    <a href="{{ route('picture.create') }}">投稿ページへ</a>
 
 </body>
 </html>

@@ -9,10 +9,10 @@
 <body>
     <h1>圧縮テスト</h1>
     <p>タイトル</p>
-    <form action="{{ route('image.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('picture.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <input type="text" name="title"><br>
-        <input type="file" name="image">
+        <input type="file" name="picture">
         <button>add</button>
     </form>
 
